@@ -3,7 +3,7 @@ import { fetchPhotosByCategory } from '../Services/ApiServices';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-interface PhotoGridProps {
+export interface PhotoGridProps {
   category: string;
 }
 

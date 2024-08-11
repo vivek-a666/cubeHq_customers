@@ -3,6 +3,7 @@ import CustomerLists from './Components/CustomerLists';
 import CustomerDetails from './Components/CustomerDetails';
 import { fetchCustomers } from './Services/ApiServices';
 import { Customer } from './types/customer';
+import PhotoGrid from './Components/Photogrid';
 
 const App: React.FC = () => {
   const [customers, setCustomers] = useState<Customer[]>([]);
@@ -35,7 +36,14 @@ const App: React.FC = () => {
         <h1 className="text-2xl p-4 text-center text-gray-700 font-semibold">Customer Details</h1>
         <div className="flex-grow flex flex-col overflow-hidden">
           {selectedCustomer ? (
-            <CustomerDetails customer={selectedCustomer} />
+            <div className="flex flex-col h-full">
+              <div className="flex-shrink-0">
+                <CustomerDetails customer={selectedCustomer} />
+              </div>
+              <div className="flex-grow overflow-auto">
+                <PhotoGrid category={selectedCustomer.title} />
+              </div>
+            </div>
           ) : (
             <div className="flex items-center justify-center h-full text-gray-500">
               Select a customer to view details
